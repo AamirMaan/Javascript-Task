@@ -5,7 +5,9 @@ const Table = ({ data, handleEdit, handleDelete }) => {
   const [allRecord, setAllRecord] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordPerPage, setRecordPerPage] = useState(10);
-
+  useEffect(() => {
+  setAllRecord(data);
+  }, [data]);
 
   //Sorting Ascending
   const handleAscSorting = (str) => {
@@ -186,12 +188,12 @@ const Table = ({ data, handleEdit, handleDelete }) => {
                         <div className="col-sm-12 col-md-5">
                           <div className="dataTables_info">
                             Showing{" "}
-                            {allRecord.length < 1
+                            {currentRecords.length < 1
                               ? "0"
                               : indexOfFirstRecord + 1}{" "}
                             to{" "}
-                            {indexOfLastRecord > data.length
-                              ? allRecord.length
+                            {indexOfLastRecord > currentRecords.length
+                              ? currentRecords.length
                               : indexOfLastRecord}{" "}
                             of {data.length} entries
                           </div>
