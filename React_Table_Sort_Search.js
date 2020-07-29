@@ -46,10 +46,12 @@ const Table = ({ data, handleEdit, handleDelete }) => {
       let searchRecord = [...data];
       let result = [];
       for (var i = 0; i < searchRecord.length; i++) {
-        if (searchRecord[i].group_name.toLowerCase().includes(searchInput)) {
+        //For Integer
+        //searchRecord[i].INTEGER.toString().indexOf(searchInput)!==-1
+        if (searchRecord[i].group_name.toLowerCase().indexOf(searchInput)!==-1) {
           result.push(searchRecord[i]);
         } else if (
-          searchRecord[i].supervisor.name.toLowerCase().includes(searchInput)
+          searchRecord[i].supervisor.name.toLowerCase().indexOf(searchInput)!==-1
         ) {
           result.push(searchRecord[i]);
         }
